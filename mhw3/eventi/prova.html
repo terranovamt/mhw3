@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      var CLIENT_ID = "704116477846-g00cn0npuqrhf40ns8pajre07idb50bb.apps.googleusercontent.com";
+      var API_KEY = "AIzaSyBGl8pq0-THlsSOaDJNJl7nQnf1YjAXYcc";
+      var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+      function start() {
+        // Initializes the client with the API key and the Translate API.
+        gapi.client
+          .init({
+            apiKey: API_KEY,
+            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            scope: SCOPES,
+          })
+          .then(
+            function (response) {
+              console.log(response.result.data.translations[0].translatedText);
+            },
+            function (reason) {
+              console.log("Error: " + reason.result.error.message);
+            }
+          );
+      }
+
+      // Loads the JavaScript client library and invokes `start` afterwards.
+      gapi.load("client", start);
+    </script>
+  </head>
+  <body>
+    <div id="results"></div>
+  </body>
+</html>
